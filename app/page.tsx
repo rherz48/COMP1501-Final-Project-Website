@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site"
 import { motion } from "motion/react"
 import Image from "next/image"
 import { Download } from "lucide-react"
-
+import DownloadButton from "@/components/ui/buttons/download-button"
 export default function Page() {
   return (
     <div>
@@ -25,18 +25,7 @@ export default function Page() {
             <p className="mt-4 max-w-lg text-center text-xl">
               {siteConfig.description}
             </p>
-
-            <a href={siteConfig.links.download} className="mt-4 flex justify-center">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                <Button className="rounded-3xl p-6 text-2xl bg-linear-to-r from-blue-500 to-primary text-white hover:from-blue-600 hover:to-purple-600">
-                  <Download className="mr-2 h-4 w-4" />
-                  Download
-                </Button>
-              </motion.div>
-            </a>
+            <DownloadButton/>
           </div>
 
           <div className="flex flex-col items-center">
