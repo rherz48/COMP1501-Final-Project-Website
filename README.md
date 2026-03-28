@@ -1,21 +1,41 @@
-# Next.js template
+# COMP1501 Final Project Website
 
-This is a Next.js template with shadcn/ui.
+![Website preview](public/images/test_image.png)
 
-## Adding components
 
-To add components to your app, run the following command:
+Final project indie game developed by a group of students in COMP1501 at Carleton University.
+
+## View the website 
+
+https://comp-1501-final-project-website.vercel.app/
+
+
+## Tech stack
+
+Next.js, React, Tailwind CSS, shadcn/ui, motion (framer motion).
+
+Deployed using Vercel.
+
+
+## Installation
 
 ```bash
-npx shadcn@latest add button
+git clone git@github.com:rherz48/COMP1501-Final-Project-Website.git
 ```
 
-This will place the ui components in the `components` directory.
-
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button";
+```bash
+cd COMP1501-Final-Project-Website
 ```
+
+```bash
+pnpm install
+```
+
+## Run Locally
+```bash
+pnpm run dev
+```
+
+View in your browser: http://localhost:3000/
+
+
