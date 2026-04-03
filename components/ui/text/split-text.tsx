@@ -29,7 +29,7 @@ export default function SplitTextComponent({ text, className }: { text: string, 
     }
   }, [])
 
-  return <span ref={ref} className={className || "text-color-primary text-center text-6xl font-bold text-blue-500"}>
+  return <span ref={ref} className={className || "text-color-primary text-center text-6xl font-bold"}>
     {text}
   </span>
 }

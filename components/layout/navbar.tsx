@@ -28,12 +28,14 @@ export default function Navbar() {
                             siteConfig.navigation.map((item) => (
                                 <NavigationMenuItem key={item.name}>
                                     {/* Use motion for hover */}
-                                    <motion.div whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 300, damping: 20 }}>
+                                    <motion.div whileHover={{ scale: 1.1 }} transition={{ type: "tween", stiffness: 300, damping: 20 }}>
 
                                         <NavigationMenuLink asChild
                                             className={cn(navigationMenuTriggerStyle(),
                                                 "hover:text-primary rounded-lg px-5 py-2",
-                                                item.highlight ? "rounded-lg px-5 py-2 text-primary border border-primary hover:text-xl" : "text-foreground")}>
+                                                item.highlight ? "rounded-lg px-5 py-2 text-primary border border-primary hover:text-xl" : "text-foreground")}
+                                                
+                                                {...(item.highlight && { target: "_blank", rel: "noopener noreferrer" })}>
                                             <Link href={item.href}>{item.name}</Link>
                                         </NavigationMenuLink>
 

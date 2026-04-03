@@ -1,21 +1,16 @@
 "use client"
 
 import { siteConfig } from "@/config/site"
-import { motion } from "motion/react"
 import Image from "next/image"
-import { ChevronsDown } from "lucide-react"
 import DownloadButton from "@/components/ui/buttons/download-button"
-import TweenGridImage from "@/components/ui/image/tween_grid_image"
 import SplitText from "@/components/ui/text/split-text"
-import TextLoop from "@/components/ui/text/loop-text"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import "./globals.css"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Lenis from "lenis"
 import { cn } from "@/lib/utils"
-
-import CarouselImage from "@/components/ui/image/carousel-image"
+import CarouselComponent from "@/components/ui/image/carousel-image"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -56,11 +51,8 @@ export default function Page() {
     const update = (time: number) => {
       lenis.raf(time * 1000); // Convert time from seconds to milliseconds
     };
-    // gsap.ticker.add((time) => {
-    //   lenis.raf(time * 1000); // Convert time from seconds to milliseconds
-    // });
-    gsap.ticker.add(update);
 
+    gsap.ticker.add(update);
     gsap.ticker.lagSmoothing(0);
 
     // Start with centered element 
@@ -70,7 +62,7 @@ export default function Page() {
         start: "top center",
         end: "bottom center",
         scrub: true,
-        // markers: true,
+        markers: true,
       }
     })
 
@@ -92,7 +84,7 @@ export default function Page() {
         start: "top bottom%",
         end: "top 70%",
         scrub: true,
-        // markers: true,
+        markers: true,
       }
     })
 
@@ -118,12 +110,12 @@ export default function Page() {
 
       </div>
 
-      <div className="flex w-full max-w-8xl flex-col gap-6 mt-12">
+      <div className="flex w-full max-w-8xl flex-col items-center mt-12">
         <h1 className="text-hero-tertiary">
           {siteConfig.heroTaglineSecondary}
-          <DownloadButton />
-        </h1>
 
+        </h1>
+        <DownloadButton />
       </div>
 
       <div className="mx-auto mt-6 w-full max-w-7xl">
@@ -176,24 +168,14 @@ export default function Page() {
 
       </div>
 
-      {/* TODO: Implement with shadcn */}
-      {/* CarouselImage section */}
+      {/* Carousel section */}
       <div className="mx-auto mt-6 w-full max-w-7xl">
-        {/* <div className="relative w-full h-1/2 aspect-[16/9]">
-          <Image
-            src="/images/test_image.png"
-            alt="Test Image"
-            fill
-            className="rounded-xl object-cover"
-          />
-        </div> */}
-        <CarouselImage imageSrc="/images/test_image.png" />
+        <CarouselComponent />
       </div>
-
 
       {/* Call to action for download */}
       <div className="mx-auto mt-6 w-full max-w-7xl">
-        
+
         <h1 className="text-hero-secondary text-4xl backdrop-blur-3xl bg-accent rounded-4xl p-4 text-center bg-linear-to-r from-blue-500 to-primary text-white">
           PLAY THE GAME TODAY
         </h1>
@@ -211,10 +193,10 @@ export default function Page() {
             ))}
           </ul>
 
-          <p className="ml-2"> in COMP1501 at Carleton University.</p>
+          <p className="ml-1"> in COMP1501 at Carleton University.</p>
 
         </div>
-        
+
         <div className="flex justify-center mt-4 pb-4 mb-10">
           <DownloadButton />
         </div>

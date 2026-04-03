@@ -9,6 +9,12 @@ Final project indie game developed by a group of students in COMP1501 at Carleto
 
 https://comp-1501-final-project-website.vercel.app/
 
+## Deployment to production
+Automatic deployment disabled for manual deployment instead. 
+
+```bash
+npx vercel --prod
+```
 
 ## Tech stack
 
@@ -31,7 +37,7 @@ cd COMP1501-Final-Project-Website
 pnpm install
 ```
 
-## Run Locally
+## Run locally
 ```bash
 pnpm run dev
 ```

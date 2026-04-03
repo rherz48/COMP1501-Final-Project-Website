@@ -6,12 +6,12 @@ import { Download } from "lucide-react"
 
 export default function DownloadButton() {
     return (
-        <a href={siteConfig.links.download} className="mt-4 flex justify-center">
+        <a href={siteConfig.links.download} className="mt-4 inline-flex" target="_blank" rel="noopener noreferrer">
             <motion.div
                 whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                transition={{ type: "tween", stiffness: 300, damping: 20 }}
             >
-                <Button className="rounded-3xl p-6 text-2xl bg-linear-to-r from-blue-500 to-primary text-white hover:from-blue-600 hover:to-purple-600">
+                <Button className="rounded-3xl p-6 text-2xl text-white bg-linear-to-r from-blue-500 to-primary hover:from-blue-600 hover:to-purple-600">
                     <Download className="mr-2 h-4 w-4" />
                     Download
                 </Button>

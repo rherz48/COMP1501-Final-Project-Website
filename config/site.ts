@@ -8,7 +8,7 @@ export const siteConfig = {
     navigation: [
         { name: "Home", href: "/" },
         { name: "About", href: "/about" },
-        { name: "Download", href: "/download", highlight: true },
+        { name: "Download", href: "https://itch.io/", highlight: true },
     ],
 
     gameAuthors: [
@@ -20,7 +20,7 @@ export const siteConfig = {
 
     links: {
         github: "https://github.com/maxcarleton1/COMP1501-Final-Project",
-        download: "/download",
+        download: "https://itch.io/",
         trailer: "",
         itchio: "",
     }
