@@ -11,6 +11,13 @@ export const siteConfig = {
         { name: "Download", href: "/download", highlight: true },
     ],
 
+    gameAuthors: [
+        { name: "Ryan" },
+        { name: "Brady" },
+        { name: "Max" },
+        { name: "Siri" },
+    ],
+
     links: {
         github: "https://github.com/maxcarleton1/COMP1501-Final-Project",
         download: "/download",

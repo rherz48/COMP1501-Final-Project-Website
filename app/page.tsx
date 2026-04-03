@@ -69,7 +69,7 @@ export default function Page() {
         start: "top center",
         end: "bottom center",
         scrub: true,
-        markers: true,
+        // markers: true,
       }
     })
 
@@ -91,7 +91,7 @@ export default function Page() {
         start: "top bottom%",
         end: "top 70%",
         scrub: true,
-        markers: true,
+        // markers: true,
       }
     })
 
@@ -190,6 +190,35 @@ export default function Page() {
       </div>
 
 
+      {/* Call to action for download */}
+      <div className="mx-auto mt-6 w-full max-w-7xl">
+        
+        <h1 className="text-hero-secondary text-4xl backdrop-blur-3xl bg-accent rounded-4xl p-4 text-center bg-linear-to-r from-blue-500 to-primary text-white">
+          PLAY THE GAME TODAY
+        </h1>
+
+        <div className="flex justify-center mt-4 pb-4">
+
+          <p>Game created by </p>
+          <ul className="flex gap-2 ml-2">
+            {siteConfig.gameAuthors.map((author, index) => (
+              <li key={index} className="text-muted-foreground">
+                {author.name}
+                {index < siteConfig.gameAuthors.length - 1 && ","}
+                {index === siteConfig.gameAuthors.length - 2 && " and"}
+              </li>
+            ))}
+          </ul>
+
+          <p className="ml-2"> in COMP1501 at Carleton University.</p>
+
+        </div>
+        
+        <div className="flex justify-center mt-4 pb-4 mb-10">
+          <DownloadButton />
+        </div>
+
+      </div>
 
     </div>
 
