@@ -29,13 +29,14 @@ export default function Page() {
 
   const imageSectionList: ImageSection[] = [
     {
-      title: "Section 1",
+      title: "Starting Tutorial Area",
       imageSrc: "/images/test_image.png",
-      description: "Description for Section 1"
+      description: "Start at the bottom, and climb your way up. Signs will guide you through game mechanics and controls."
     },
     {
       title: "Section 2",
       imageSrc: "/images/test_image.png",
+      description: "Description for Section 2"
     },
     {
       title: "Section 3",
