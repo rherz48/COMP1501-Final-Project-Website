@@ -12,31 +12,95 @@ import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import "./globals.css"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import Lenis from "lenis"
+import { cn } from "@/lib/utils"
+
+import CarouselImage from "@/components/ui/image/carousel-image"
 
 gsap.registerPlugin(ScrollTrigger)
 
+interface ImageSection {
+  title: string;
+  imageSrc?: string;
+  description?: string;
+}
+
 export default function Page() {
 
-  // right class scroll trigger
+  const imageSectionList: ImageSection[] = [
+    {
+      title: "Section 1",
+      imageSrc: "/images/test_image.png",
+      description: "Description for Section 1"
+    },
+    {
+      title: "Section 2",
+      imageSrc: "/images/test_image.png",
+    },
+    {
+      title: "Section 3",
+      imageSrc: "/images/test_image.png",
+    },
+    {
+      title: "Section 4",
+      imageSrc: "/images/test_image.png",
+    },
+  ]
+
   useGSAP(() => {
-    gsap.set(".right", {
-      x: 0,
-      scale: 1,
-      transformOrigin: "right center",
+
+    const lenis = new Lenis();
+    lenis.on('scroll', ScrollTrigger.update);
+
+    const update = (time: number) => {
+      lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+    };
+    // gsap.ticker.add((time) => {
+    //   lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+    // });
+    gsap.ticker.add(update);
+
+    gsap.ticker.lagSmoothing(0);
+
+    // Start with centered element 
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".centered-trigger",
+        start: "top center",
+        end: "bottom center",
+        scrub: true,
+        markers: true,
+      }
     })
 
-    gsap.to(".right", {
-      x: () => window.innerWidth * 0.18,
+    // Scale down centered element and move to top when scroll past it 
+    tl.to(".centered-element", {
+      x: "0%",
       scale: 0.5,
-      transformOrigin: "right center",
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: ".right-trigger",
-        start: "top center",
-        end: "+=400",
-        scrub: true,
-      },
+      transformOrigin: "top center",
+      ease: "none",
     })
+
+    // Fade out centered element when scroll past the fade trigger section
+    tl.to(".centered-element", {
+      opacity: 0,
+      transformOrigin: "top center",
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".fade-centered-trigger-section",
+        start: "top bottom%",
+        end: "top 70%",
+        scrub: true,
+        markers: true,
+      }
+    })
+
+    //Clean up on unmount
+    return () => {
+      gsap.ticker.remove(update);
+      lenis.destroy();
+    }
+
   }, [])
 
 
@@ -62,10 +126,10 @@ export default function Page() {
       </div>
 
       <div className="mx-auto mt-6 w-full max-w-7xl">
-      
-        <div className="right-trigger">
-          <div className="right relative w-full aspect-[16/9]">
-          
+
+        <div className="centered-trigger">
+          <div className="centered-element relative w-full aspect-[16/9]">
+
             <Image
               src="/images/test_image.png"
               alt="Test Image"
@@ -74,8 +138,58 @@ export default function Page() {
             />
           </div>
         </div>
-      
+
       </div>
+
+      {/* When you pass here, the centered trigger will fade away */}
+      <div className="fade-centered-trigger-section mx-auto mt-6 w-full max-w-7xl">
+        {/* Alternating sides with images and text description*/}
+        {
+          imageSectionList.map((section, index) => {
+
+            // Alternate sides for each section
+            const shouldReverse = index % 2 === 0;
+
+            return (
+              <div key={index} className={cn("flex flex-col md:flex-row items-center gap-6 my-12", shouldReverse ? "md:flex-row" : "md:flex-row-reverse")}>
+
+                <div className="w-full md:w-1/2">
+                  <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
+                  <p className="text-lg text-muted-foreground">{section.description}</p>
+                </div>
+                <div className="w-full md:w-1/2 relative aspect-[16/9]">
+                  {section.imageSrc && (
+                    <Image
+                      src={section.imageSrc}
+                      alt={section.title}
+                      fill
+                      className="rounded-xl object-cover"
+                    />
+                  )}
+                </div>
+              </div>
+            )
+          })
+
+        }
+
+      </div>
+
+      {/* TODO: Implement with shadcn */}
+      {/* CarouselImage section */}
+      <div className="mx-auto mt-6 w-full max-w-7xl">
+        {/* <div className="relative w-full h-1/2 aspect-[16/9]">
+          <Image
+            src="/images/test_image.png"
+            alt="Test Image"
+            fill
+            className="rounded-xl object-cover"
+          />
+        </div> */}
+        <CarouselImage imageSrc="/images/test_image.png" />
+      </div>
+
+
 
     </div>
 
