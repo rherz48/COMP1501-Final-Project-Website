@@ -62,7 +62,7 @@ export default function Page() {
         start: "top center",
         end: "bottom center",
         scrub: true,
-        markers: true,
+        // markers: true,
       }
     })
 
@@ -84,7 +84,7 @@ export default function Page() {
         start: "top bottom%",
         end: "top 70%",
         scrub: true,
-        markers: true,
+        // markers: true,
       }
     })
 
