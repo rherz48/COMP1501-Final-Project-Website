@@ -17,7 +17,7 @@ import { siteConfig } from "@/config/site"
 
 export default function Navbar() {
     return (
-        <header className="w-full text-3xl font-bold p-4 border-b border-accent">
+        <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 w-full text-3xl font-bold p-4 border-b border-accent">
 
             <div className="mx-auto flex items-center justify-center">
                 <NavigationMenu>

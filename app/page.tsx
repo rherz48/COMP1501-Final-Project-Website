@@ -1,111 +1,82 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/config/site"
 import { motion } from "motion/react"
 import Image from "next/image"
-import { Download, ChevronsDown, Grid, Split } from "lucide-react"
+import { ChevronsDown } from "lucide-react"
 import DownloadButton from "@/components/ui/buttons/download-button"
-import GridImage from "@/components/ui/image/grid_image"
 import TweenGridImage from "@/components/ui/image/tween_grid_image"
 import SplitText from "@/components/ui/text/split-text"
 import TextLoop from "@/components/ui/text/loop-text"
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
+import "./globals.css"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Page() {
 
-  const listOfWords = ["Climb your way to the top!",
-                     "Unleash your inner climber!", 
-                     "Jump into the unknown!", 
-                     "Get ready to climb!"]
-  
+  // right class scroll trigger
+  useGSAP(() => {
+    gsap.set(".right", {
+      x: 0,
+      scale: 1,
+      transformOrigin: "right center",
+    })
+
+    gsap.to(".right", {
+      x: () => window.innerWidth * 0.18,
+      scale: 0.5,
+      transformOrigin: "right center",
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: ".right-trigger",
+        start: "top center",
+        end: "+=400",
+        scrub: true,
+      },
+    })
+  }, [])
+
+
   return (
     <div>
       <div className="mx-auto mt-8 flex w-full max-w-2xl flex-col items-center gap-4">
-        <h1 className="text-center text-6xl font-bold text-blue-500">
-          {/* {siteConfig.name} */}
+        <h1 className="text-hero">
           <SplitText text={siteConfig.name} className="top-text" />
         </h1>
 
-        {/* <h1 className="text-center text-6xl font-bold text-blue-500 top-text">
-          Testing
-        </h1> */}
-        
+        <p className="text-hero-secondary text-4xl backdrop-blur-3xl bg-accent rounded-4xl p-4">
+          {siteConfig.heroTagline}
+        </p>
+
       </div>
 
-      <div className="px-6 py-12">
-        <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-start gap-12 md:grid-cols-2">
-          <div className="flex flex-col items-center">
-            <h2 className="text-center text-3xl font-bold text-primary">
-              Download the game now and start climbing!
-            </h2>
-
-            <p className="mt-4 max-w-lg text-center text-xl">
-              {siteConfig.description}
-            </p>
-            <DownloadButton/>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <h2 className="text-center text-3xl font-bold text-primary">
-              See the game in action!
-            </h2>
-
-            {/* <p className="mt-4 text-center text-xl">Climb your way to the top!</p> */}
-            <p className="mt-4 text-center text-xl">
-              <TextLoop list={listOfWords} className="text-2xl font-bold text-primary" />
-              </p>
-
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="mt-6 w-full"
-            >
-              <div className="mx-auto w-full max-w-5xl">
-                <div className="relative aspect-video w-full">
-                  <Image
-                    src="/images/test_image.png"
-                    alt="Gameplay Image 1"
-                    fill
-                    className="rounded-xl object-cover"
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-
-      <div className="mx-auto mt-8 flex w-full max-w-2xl flex-col items-center gap-4 pb-10">
-        <motion.div
-          initial={{ y: 0 }}
-          animate={{ y: 10 }}
-          transition={{ repeat: Infinity, repeatType: "reverse", duration: 1 }}
-        >
-          <ChevronsDown size={40} className="animate-pulse drop-shadow-md"/>
-        </motion.div>
-
-        <h1 className="text-center text-3xl font-bold text-blue-500">
-          See screenshots from the game!
+      <div className="flex w-full max-w-8xl flex-col gap-6 mt-12">
+        <h1 className="text-hero-tertiary">
+          {siteConfig.heroTaglineSecondary}
+          <DownloadButton />
         </h1>
 
       </div>
 
-      {/* Use array of grid images in TweenGridImage */}
-      <TweenGridImage 
-        images={[
-          { src: "/images/test_image.png", alt: "Gameplay Image 1" },
-          { src: "/images/test_image.png", alt: "Gameplay Image 2" },
-          { src: "/images/test_image.png", alt: "Gameplay Image 3" },
-          { src: "/images/test_image.png", alt: "Gameplay Image 4" },
-          { src: "/images/test_image.png", alt: "Gameplay Image 5" },
-          { src: "/images/test_image.png", alt: "Gameplay Image 6" },
-        ]}
-      />
-
-
+      <div className="mx-auto mt-6 w-full max-w-7xl">
       
+        <div className="right-trigger">
+          <div className="right relative w-full aspect-[16/9]">
+          
+            <Image
+              src="/images/test_image.png"
+              alt="Test Image"
+              fill
+              className="rounded-xl object-cover"
+            />
+          </div>
+        </div>
+      
+      </div>
+
     </div>
 
   )

@@ -127,3 +127,27 @@
     @apply font-sans;
     }
 }
+
+@layer components {
+
+ .text-hero-top {
+    @apply text-8xl font-bold text-center text-primary;
+  }
+
+  .text-hero {
+    @apply text-8xl font-bold text-center text-primary;
+  }
+
+  .text-hero-secondary {
+    @apply text-4xl font-semibold text-center text-foreground;
+  }
+
+  .text-hero-muted {
+    @apply text-2xl font-medium text-center text-foreground/70;
+  }
+
+  .text-hero-tertiary {
+    @apply text-2xl font-medium text-center text-foreground/50;
+  }
+
+}
