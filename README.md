@@ -12,7 +12,7 @@ https://comp-1501-final-project-website.vercel.app/
 
 ## Tech stack
 
-Next.js, React, Tailwind CSS, shadcn/ui, motion (framer motion).
+Next.js, React, Tailwind CSS, shadcn/ui, motion (framer motion), GSAP, lenis.
 
 Deployed using Vercel.
 
