@@ -35,7 +35,7 @@ export default function Page() {
     },
     {
       title: "Desert areas",
-      imageSrc: "/images/desert_area/desert_area_0.png",
+      imageSrc: "/images/desert_area/desert_area_0_cropped.png",
       description: "Discover the vast desert landscapes with unique environments and challenges."
     },
     {
@@ -54,7 +54,7 @@ export default function Page() {
     { imageSrc: "/images/green_area/green_area_3_image_2.png" },
     { imageSrc: "/images/green_area/green_area_4.png" },
     { imageSrc: "/images/green_area/green_area_5.png" },
-    { imageSrc: "/images/desert_area/desert_area_0.png" },
+    { imageSrc: "/images/desert_area/desert_area_0_cropped.png" },
     { imageSrc: "/images/snow_area/snow_area_cropped_0.png" },
   ]
 
