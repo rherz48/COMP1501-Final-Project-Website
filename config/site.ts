@@ -12,16 +12,16 @@ export const siteConfig = {
     ],
 
     gameAuthors: [
-        { name: "Ryan" },
-        { name: "Brady" },
-        { name: "Max" },
-        { name: "Siri" },
+        { name: "Ryan Herzog" },
+        { name: "Brady Kearley" },
+        { name: "Max Sobota" },
+        { name: "Siri Strassner" },
     ],
 
     links: {
         github: "https://github.com/maxcarleton1/COMP1501-Final-Project",
         download: "https://brady-kearley.itch.io/altura",
         trailer: "",
-        itchio: "",
+        itchio: "https://brady-kearley.itch.io/altura",
     }
 }

@@ -1,6 +1,6 @@
 # COMP1501 Final Project Website
 
-![Game preview](public/images/test_image.png)
+![Game preview](public/images/starting_area.png)
 
 
 Final project indie game developed by a group of students in COMP1501 at Carleton University.
