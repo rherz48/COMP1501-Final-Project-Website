@@ -1,5 +1,5 @@
 export const siteConfig = {
-    name: "Jumper Game",
+    name: "Altura",
     tagline: "Jump higher than ever before!",
     description: "Final project indie game developed by a group of students in COMP1501 at Carleton University.",
     heroTagline: "Jump your way to the top",
