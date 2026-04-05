@@ -25,22 +25,36 @@ export default function Page() {
   const imageSectionList: ImageSection[] = [
     {
       title: "Starting Tutorial Area",
-      imageSrc: "/images/test_image.png",
+      imageSrc: "/images/starting_area.png",
       description: "Start at the bottom, and climb your way up. Signs will guide you through game mechanics and controls."
     },
     {
-      title: "Section 2",
+      title: "Green areas",
       imageSrc: "/images/test_image.png",
-      description: "Description for Section 2"
+      description: "Explore the many green areas with unique themes and challenges."
     },
     {
-      title: "Section 3",
+      title: "Desert areas",
       imageSrc: "/images/test_image.png",
+      description: "Discover the vast desert landscapes with unique environments and challenges."
     },
     {
-      title: "Section 4",
+      title: "Snow areas",
       imageSrc: "/images/test_image.png",
+      description: "See the icy terrains with unique mechanics."
     },
+  ]
+
+  const carouselComponentImages = [
+    { imageSrc: "/images/starting_area.png" }, 
+    { imageSrc: "/images/green_area/green_area_0.png" }, 
+    { imageSrc: "/images/green_area/green_area_1.png" },
+    { imageSrc: "/images/green_area/green_area_2.png" },
+    { imageSrc: "/images/green_area/green_area_3_image_1.png" },
+    { imageSrc: "/images/green_area/green_area_3_image_2.png" },
+    { imageSrc: "/images/green_area/green_area_4.png" },
+    { imageSrc: "/images/green_area/green_area_5.png" },
+
   ]
 
   useGSAP(() => {
@@ -124,7 +138,7 @@ export default function Page() {
           <div className="centered-element relative w-full aspect-[16/9]">
 
             <Image
-              src="/images/test_image.png"
+              src="/images/starting_area.png"
               alt="Test Image"
               fill
               className="rounded-xl object-cover"
@@ -170,7 +184,7 @@ export default function Page() {
 
       {/* Carousel section */}
       <div className="mx-auto mt-6 w-full max-w-7xl">
-        <CarouselComponent />
+        <CarouselComponent carouselImageItems={carouselComponentImages} />
       </div>
 
       {/* Call to action for download */}
